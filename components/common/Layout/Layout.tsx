@@ -16,6 +16,7 @@ import CheckoutSidebarView from '@components/checkout/CheckoutSidebarView'
 
 import LoginView from '@components/auth/LoginView'
 import s from './Layout.module.css'
+import getSlug from '@lib/get-slug'
 
 const Loading = () => (
   <div className="w-80 h-80 flex items-center text-center justify-center p-3">
@@ -90,23 +91,55 @@ const SidebarUI: FC = () => {
   ) : null
 }
 
+// Sort pages by the sort order assigned in the BC dashboard
+function bySortOrder(a: Page, b: Page) {
+  return (a.sort_order ?? 0) - (b.sort_order ?? 0)
+}
+
+
+function usePages(pages?: Page[]) {
+  const { locale = "en-CA" } = useRouter()
+  const sitePages: Page[] = []
+
+  if (pages) {
+    pages.forEach((page) => {
+      const slug = page.url && getSlug(page.url)
+      if (!slug) return
+      if (locale && !slug.startsWith(`${locale}/`)) return
+      sitePages.push(page)
+    })
+  }
+
+  return {
+    sitePages: sitePages.sort(bySortOrder),
+  }
+}
+
 const Layout: FC<Props> = ({
   children,
-  pageProps: { categories = [], ...pageProps },
+  pageProps: { categories = [], pages },
 }) => {
+  const { sitePages } = usePages(pages)
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
-  const { locale = 'en-US' } = useRouter()
-  const navBarlinks = categories.slice(0, 2).map((c) => ({
-    label: c.name,
-    href: `/search/${c.slug}`,
-  }))
+  const { locale = 'en-CA' } = useRouter()
+  const nbLinks = categories.filter((c) => c.name == "All").map(c => (
+    {
+      label: "Products",
+      href: `/search/${c.slug}`,
+    }));
+
+  const pageLinks = sitePages.map( p => ({
+    label: p.name,
+    href:  `${p.url}`,
+  }));
+  const navBarlinks = [...nbLinks, ...pageLinks];
 
   return (
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
         <Navbar links={navBarlinks} />
         <main className="fit">{children}</main>
-        <Footer pages={pageProps.pages} />
+        <Footer pages={pages} />
         <ModalUI />
         <SidebarUI />
         <FeatureBar

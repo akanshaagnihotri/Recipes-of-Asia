@@ -17,7 +17,7 @@ import fetcher from './fetcher'
 import swell from './swell'
 
 export const swellProvider: Provider & { swell: any } = {
-  locale: 'en-us',
+  locale: 'en-CA',
   cartCookie: SWELL_CHECKOUT_ID_COOKIE,
   swell,
   fetcher,

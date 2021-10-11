@@ -11,3 +11,7 @@
     @apply scale-110;
   }
 }
+
+.websiteName{
+  min-width: max-content;
+}

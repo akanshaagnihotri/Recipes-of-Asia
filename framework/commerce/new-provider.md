@@ -71,7 +71,7 @@ export { bigcommerceProvider }
 export type { BigcommerceProvider }
 
 export const bigcommerceConfig: CommerceConfig = {
-  locale: 'en-us',
+  locale: 'en-CA',
   cartCookie: 'bc_cartId',
 }
 
@@ -120,7 +120,7 @@ import { handler as useSignup } from './auth/use-signup'
 import fetcher from './fetcher'
 
 export const bigcommerceProvider = {
-  locale: 'en-us',
+  locale: 'en-CA',
   cartCookie: 'bc_cartId',
   fetcher,
   cart: { useCart, useAddItem, useUpdateItem, useRemoveItem },

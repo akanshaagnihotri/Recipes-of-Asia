@@ -10,7 +10,7 @@ import { handler as useLogout } from './auth/use-logout'
 import { handler as useSignup } from './auth/use-signup'
 
 export const localProvider = {
-  locale: 'en-us',
+  locale: 'en-CA',
   cartCookie: 'session',
   fetcher: fetcher,
   cart: { useCart, useAddItem, useUpdateItem, useRemoveItem },

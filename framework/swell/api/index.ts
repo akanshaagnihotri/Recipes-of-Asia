@@ -23,7 +23,7 @@ export interface SwellConfig extends CommerceAPIConfig {
 }
 
 const config: SwellConfig = {
-  locale: 'en-US',
+  locale: 'en-CA',
   commerceUrl: '',
   apiToken: ''!,
   cartCookie: SWELL_CHECKOUT_ID_COOKIE,

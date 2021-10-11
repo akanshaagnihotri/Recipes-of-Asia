@@ -175,7 +175,7 @@ function normalizeLineItem({
 
 export const normalizePage = (
   { title: name, handle, ...page }: ShopifyPage,
-  locale: string = 'en-US'
+  locale: string = 'en-CA'
 ): Page => ({
   ...page,
   url: `/${locale}/${handle}`,

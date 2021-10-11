@@ -25,7 +25,7 @@ export default function getAllPagesOperation({
     preview?: boolean
     query?: string
   } = {}): Promise<GetAllPagesResult> {
-    const { fetch, locale, locales = ['en-US'] } = commerce.getConfig(config)
+    const { fetch, locale, locales = ['en-CA'] } = commerce.getConfig(config)
 
     const { data } = await fetch(query, { variables },
       {
@@ -42,7 +42,7 @@ export default function getAllPagesOperation({
       url: `/${locale}/${slug}`,
       name,
     }))
-  
+
     return { pages }
   }
 
