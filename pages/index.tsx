@@ -40,28 +40,28 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <Grid variant="filled">
+      <Grid layout="A" variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
             key={product.id}
             product={product}
             imgProps={{
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
+              width: i === 0 ? 540 : 270,
+              height: i === 0 ? 540 : 270,
             }}
           />
         ))}
       </Grid>
-      <Marquee variant="secondary">
+      {/* <Marquee variant="primary">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
-      </Marquee>
+      </Marquee> */}
       <Hero
-        headline=" Dessert dragée halvah croissant."
-        description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
+        headline=" Unique Recipes from Your Home."
+        description="We have traditional food recipes from India, Iran, Bangladesh and Sri Lanka, so we can make you feel like home in Canada even though you are thousands of miles away. We have almost all the ingredients you’ll need to prepare your dishes according to the traditional dish that you are craving for. Plus you will find the same quality and taste with our ingredients. You can do the grocery shopping with the comfort of your home. We will deliver the order to your door step. Go through our delivery grid for delivery chargers and how long will it take for you to taste your favourite dish."
       />
-      <Grid layout="B" variant="filled">
+      {/* <Grid layout="normal" variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
             key={product.id}
@@ -72,8 +72,8 @@ export default function Home({
             }}
           />
         ))}
-      </Grid>
-      <Marquee>
+      </Grid> */}
+      <Marquee variant="primary">
         {products.slice(3).map((product: any, i: number) => (
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
